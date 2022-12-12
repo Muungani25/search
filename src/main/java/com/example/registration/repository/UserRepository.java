@@ -1,7 +1,8 @@
-package zw.co.afrosoft.registration.repository;
+package com.example.registration.repository;
 
-import zw.co.afrosoft.registration.model.User;
+import com.example.registration.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+
 
 import java.util.Optional;
 

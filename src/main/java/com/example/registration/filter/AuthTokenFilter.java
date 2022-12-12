@@ -1,7 +1,7 @@
-package zw.co.afrosoft.registration.filter;
+package com.example.registration.filter;
 
-import zw.co.afrosoft.registration.service.UserDetailsServiceImpl;
-import zw.co.afrosoft.registration.util.JwtUtil;
+import com.example.registration.service.UserDetailsServiceImpl;
+import com.example.registration.util.JwtUtil;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

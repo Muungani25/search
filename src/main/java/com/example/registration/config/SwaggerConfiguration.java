@@ -1,18 +1,14 @@
-package zw.co.afrosoft.epayments.config;
+package com.example.registration.config;
 
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import io.swagger.v3.oas.models.info.Info;
 
-/**
- * @author Mitch
- * 17/10/18
- * 11:26 PM
- */
+
 @Configuration
 public class SwaggerConfiguration {
     @Bean
@@ -24,8 +20,8 @@ public class SwaggerConfiguration {
 
     private Info apiInfo() {
         return new Info()
-                .title("EPayments Services API")
-                .description("REST API to get end points for E-Payments Services.")
+                .title("Registration Service API")
+                .description("REST API to get end points for registering to the TODO app.")
                 .version("2.0")
                 .contact(apiContact())
                 .license(apiLicense());

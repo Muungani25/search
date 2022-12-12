@@ -1,8 +1,8 @@
-package zw.co.afrosoft.registration.config;
+package com.example.registration.config;
 
-import zw.co.afrosoft.registration.filter.AuthTokenFilter;
-import zw.co.afrosoft.registration.service.AuthEntryPointJwt;
-import zw.co.afrosoft.registration.service.UserDetailsServiceImpl;
+import com.example.registration.filter.AuthTokenFilter;
+import com.example.registration.service.AuthEntryPointJwt;
+import com.example.registration.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -54,7 +54,10 @@ public class SecurityConfiguration {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(authEntryPointJwt).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
+                .authorizeRequests()
+                .antMatchers("/**")
+                .permitAll()
+                .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/api/test/**").permitAll()
                 .anyRequest().authenticated();
         http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);

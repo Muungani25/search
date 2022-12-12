@@ -1,15 +1,16 @@
-package zw.co.afrosoft.registration.service.login;
+package com.example.registration.service.login;
 
-import zw.co.afrosoft.registration.dto.JwtResponse;
-import zw.co.afrosoft.registration.dto.SignInRequest;
-import zw.co.afrosoft.registration.service.UserDetailsImpl;
-import zw.co.afrosoft.registration.util.JwtUtil;
+import com.example.registration.dto.JwtResponse;
+import com.example.registration.dto.SignInRequest;
+import com.example.registration.service.UserDetailsImpl;
+import com.example.registration.util.JwtUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,7 +39,7 @@ public class UserLoginServiceImpl implements UserLoginService{
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
         JwtResponse res = new JwtResponse();
-        res.setToken(jwt);
+       // res.setToken(jwt);
         res.setId(userDetails.getId());
         res.setUsername(userDetails.getUsername());
         res.setRoles(roles);

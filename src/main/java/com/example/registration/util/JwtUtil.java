@@ -1,21 +1,20 @@
-package zw.co.afrosoft.registration.util;
+package com.example.registration.util;
 
-import zw.co.afrosoft.registration.service.UserDetailsImpl;
+import com.example.registration.service.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
-
 import java.util.Date;
 
 @Component
 @Log4j2
 public class JwtUtil {
-    @Value("${registration.app.jwtSecret}")
+    @Value("mysecret")
     private String jwtSecret;
 
-    @Value("${registration.app.jwtExpirationMs}")
+    @Value("864000000")
     private int jwtExpirationMs;
 
     public String generateJwtToken(Authentication authentication) {

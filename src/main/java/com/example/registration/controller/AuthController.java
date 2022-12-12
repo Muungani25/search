@@ -1,11 +1,14 @@
-package zw.co.afrosoft.registration.controller;
+package com.example.registration.controller;
 
-import zw.co.afrosoft.registration.dto.SignInRequest;
-import zw.co.afrosoft.registration.dto.SignUpRequest;
-import zw.co.afrosoft.registration.service.login.UserLoginService;
-import zw.co.afrosoft.registration.service.registration.UserRegistrationService;
+import com.example.registration.dto.SignInRequest;
+import com.example.registration.dto.SignUpRequest;
+import com.example.registration.service.login.UserLoginService;
+import com.example.registration.service.registration.UserRegistrationService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -24,6 +27,11 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody SignUpRequest signUpRequest) {
-        return userRegistrationService.registerUser(signUpRequest);
+        return userRegistrationService.registerUser(signUpRequest, false);
     }
+//    @PostMapping("/admin/signup")
+//    public ResponseEntity<String> adminSignup(@RequestBody SignUpRequest signUpRequest) {
+//        return userRegistrationService.registerUser(signUpRequest, true);
+//    }
+
 }

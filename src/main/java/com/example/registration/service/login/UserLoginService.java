@@ -1,8 +1,9 @@
-package zw.co.afrosoft.registration.service.login;
+package com.example.registration.service.login;
 
-import zw.co.afrosoft.registration.dto.JwtResponse;
-import zw.co.afrosoft.registration.dto.SignInRequest;
+import com.example.registration.dto.JwtResponse;
+import com.example.registration.dto.SignInRequest;
 import org.springframework.http.ResponseEntity;
+
 
 public interface UserLoginService {
     ResponseEntity<JwtResponse> signInUser(SignInRequest signInRequest);

@@ -1,4 +1,4 @@
-package zw.co.afrosoft.registration.service;
+package com.example.registration.service;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.AuthenticationException;

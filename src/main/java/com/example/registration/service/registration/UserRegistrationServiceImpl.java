@@ -1,15 +1,16 @@
-package zw.co.afrosoft.registration.service.registration;
+package com.example.registration.service.registration;
 
-import zw.co.afrosoft.registration.dto.SignUpRequest;
-import zw.co.afrosoft.registration.model.ERole;
-import zw.co.afrosoft.registration.model.Role;
-import zw.co.afrosoft.registration.model.User;
-import zw.co.afrosoft.registration.repository.RoleRepository;
-import zw.co.afrosoft.registration.repository.UserRepository;
+import com.example.registration.domain.ERole;
+import com.example.registration.domain.Role;
+import com.example.registration.domain.User;
+import com.example.registration.dto.SignUpRequest;
+import com.example.registration.repository.RoleRepository;
+import com.example.registration.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -33,7 +34,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 
 
     @Override
-    public ResponseEntity<String> registerUser(SignUpRequest signUpRequest) {
+    public ResponseEntity<String> registerUser(SignUpRequest signUpRequest, Boolean isAdmin) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("username is already taken");
         }
@@ -42,8 +43,9 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
         }
         String hashedPassword = passwordEncoder.encode(signUpRequest.getPassword());
         Set<Role> roles = new HashSet<>();
-        Optional<Role> userRole = roleRepository.findByName(ERole.ROLE_USER);
-        if (userRole.isEmpty()) {
+        Optional<Role> userRole = isAdmin ? roleRepository.findByName(ERole.ROLE_ADMIN) : roleRepository.findByName(ERole.ROLE_USER);
+
+        if (!userRole.isPresent()) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("role not found");
         }
         roles.add(userRole.get());

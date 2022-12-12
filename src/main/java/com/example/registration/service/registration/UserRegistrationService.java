@@ -1,8 +1,9 @@
-package zw.co.afrosoft.registration.service.registration;
+package com.example.registration.service.registration;
 
-import zw.co.afrosoft.registration.dto.SignUpRequest;
+import com.example.registration.dto.SignUpRequest;
 import org.springframework.http.ResponseEntity;
 
+
 public interface UserRegistrationService {
-    ResponseEntity<String> registerUser(SignUpRequest signUpRequest);
+    ResponseEntity<String> registerUser(SignUpRequest signUpRequest, Boolean isAdmin);
 }

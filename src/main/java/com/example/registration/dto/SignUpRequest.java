@@ -1,4 +1,4 @@
-package zw.co.afrosoft.registration.dto;
+package com.example.registration.dto;
 
 import lombok.Data;
 

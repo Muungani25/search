@@ -1,4 +1,4 @@
-package zw.co.afrosoft.registration.model;
+package com.example.registration.domain;
 
 import javax.persistence.*;
 
