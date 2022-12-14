@@ -21,6 +21,7 @@ public class UserLoginServiceImpl implements UserLoginService{
     private AuthenticationManager authenticationManager;
     private JwtUtil jwtUtil;
 
+
     public UserLoginServiceImpl(
             AuthenticationManager authenticationManager,
                                 JwtUtil jwtUtil) {
@@ -34,13 +35,15 @@ public class UserLoginServiceImpl implements UserLoginService{
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInRequest.getUsername(), signInRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtil.generateJwtToken(authentication);
+
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
         JwtResponse res = new JwtResponse();
-       // res.setToken(jwt);
+       res.setToken(jwt);
         res.setId(userDetails.getId());
+
         res.setUsername(userDetails.getUsername());
         res.setRoles(roles);
         return  ResponseEntity.ok(res);
